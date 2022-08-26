@@ -1,0 +1,38 @@
+{% include "messages.html" %}
+
+{% if homeworks|length >= 1 %}
+  <table class="table table-striped table-bordered table-hover table-dark">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Due</th>
+              <th scope="col">Status</th>
+              <th scope="col">Delete</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for work in homeworks %}
+          <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ work.subject }}</td>
+              <td>{{ work.title }}</td>
+              <td>{{ work.description }}</td>
+              <td>{{ work.due }}</td>
+
+              <td id="homework-check">
+                {% include "dashboard/partials/homework_check.html" %}
+              </td>
+              <td>
+                <a hx-delete="{% url 'dashboard:delete-homework' work.pk %}" hx-target="#homeworks-list" hx-confirm="Are you sure you wish to delete?">
+                    <i class="bi bi-trash-fill"></i></a>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+{% else %}
+  <h4>All homeworks are completed!! Create to have more!!</h4>
+{% endif %}

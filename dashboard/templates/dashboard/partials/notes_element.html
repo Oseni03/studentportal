@@ -1,0 +1,20 @@
+{% include "messages.html" %}
+
+<div class="container" id="notes-list">
+  {% include "dashboard/partials/notes_list.html" %}
+</div>
+<br><br>
+<div class="container">
+    <form hx-post="{% url 'dashboard:notes' %}" hx-target="#note">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Notes</legend>
+        </fieldset>
+        <div class="form-group">
+            {{ form.as_p }}
+            <button href="" class="btn btn-outline-info" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>

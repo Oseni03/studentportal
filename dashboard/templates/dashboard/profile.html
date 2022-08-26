@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section class="text-center">
+
+    <div class="container">
+        <h2>Due ToDos</h2>
+        <div id="todo">
+          {% include "dashboard/partials/todo_list.html" %}
+        </div>
+
+        <a href="{% url 'dashboard:todo' %}" class="btn btn-danger">To Do</a>
+        <br><br>
+        <h2>Due Homeworks</h2>
+        <div id="homeworks-list">
+          {% include "dashboard/partials/homeworks_list.html" %}
+        </div>
+
+        <a href="{% url 'dashboard:homeworks' %}" class="btn btn-danger">Homeworks</a>
+    </div>
+</section>
+
+{% endblock content %}

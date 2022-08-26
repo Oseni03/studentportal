@@ -1,0 +1,34 @@
+{% if work.is_finished %}
+  <div class="form-check">
+      <input 
+        class="form-check-input" 
+        type="checkbox" 
+        value="{{work.is_finished}}" 
+        checked 
+        id="{{work.id}}"
+        hx-post= "{% url 'dashboard:complete-homework' work.id %}"
+        hx-swap= "innerHTML"
+        hx-target = "#homeworks-list"
+        hx-trigger= "click"
+      >
+      <label class="form-check-label text-light" for="flexCheckDefault">
+          Mark as Completed
+      </label>
+  </div>
+{% else %}
+  <div class="form-check">
+      <input 
+        class="form-check-input" 
+        type="checkbox" 
+        value="{{work.is_finished}}" 
+        id="{{work.id}}"
+        hx-post= "{% url 'dashboard:complete-homework' work.id %}"
+        hx-swap= "innerHTML"
+        hx-target = "#homeworks-list"
+        hx-trigger= "click"
+      >
+      <label class="form-check-label text-light" for="flexCheckDefault">
+          Mark as Completed
+      </label>
+  </div>
+{% endif %}

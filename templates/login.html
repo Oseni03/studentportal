@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+  
+  <form class="form-group" method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Log In</legend>
+    </fieldset>
+    
+    <label>{{ form.username.label_tag }}</label>
+    <div style='color: red;'>{{ form.username.errors }}</div>
+    {% render_field form.username class="form-control" hx-post="/check-login-username/" hx-swap="outerhtml" hx-trigger="keyup delay:2s" hx-target="#username-errors" %}
+    <div id="username-errors"></div>
+    
+    <label>{{ form.password.label_tag }}</label>
+    <div style='color: red;'>{{ form.password.errors }}</div>
+    {% render_field form.password class="form-control" %}
+    <br>
+    <div class="form-group">
+      <button href="" class="btn btn-outline-info" type="submit">
+        Sign In
+      </button>
+    </div>
+  </form>
+  
+  <div class="border-top pt-3">
+    <small class="text-muted">Need an Account?
+      <a class="ml-2" href="{% url 'register' %}">Create an Account</a>
+    </small>
+  </div>
+</div>
+{% endblock %}

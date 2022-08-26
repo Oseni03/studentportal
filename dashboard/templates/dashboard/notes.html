@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% comment %}
+{% load crispy_forms_tags %}
+{% endcomment %}
+
+{% block content %}
+
+<div id="note">
+  {% include "dashboard/partials/notes_element.html" %}
+</div>
+
+{% endblock content %}

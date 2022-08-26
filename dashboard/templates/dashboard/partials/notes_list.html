@@ -1,0 +1,20 @@
+{% include "messages.html" %}
+
+<div class="row">
+  {% for note in notes %}
+    <div class="col-md-3">
+        <a href="{{ note.get_absolute_url }}">
+            <div class="card">
+                <div class="card-header">{{ note.title }}</div>
+                <div class="card-body">{{ note.description|slice:"0:100" }}</div>
+                <div class="card-footer mt-auto "><a hx-delete="{% url 'dashboard:delete-note' note.pk %}" hx-target="#notes-list" hx-confirm="Are you sure you wish to delete?">
+                    <i class="bi bi-trash-fill"></i></a>
+                </div>
+            </div>
+        </a>
+    </div>
+  {% endfor %}
+
+    <br><br>
+
+</div>
